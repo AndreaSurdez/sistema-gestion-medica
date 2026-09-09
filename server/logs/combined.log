@@ -1174,3 +1174,21 @@
 {"level":"info","message":"Cita creada: ID 19 por usuario jperez","timestamp":"2026-09-09T18:43:39.899Z"}
 {"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-09T18:44:09.150Z"}
 {"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T18:44:09.255Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T19:20:05.512Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-09T19:20:05.605Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T19:20:05.688Z"}
+{"level":"info","message":"Login exitoso: usuario admin con rol administrativo","timestamp":"2026-09-09T19:20:11.463Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T19:20:11.520Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T19:20:11.521Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T19:20:57.944Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T19:21:34.085Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-09T19:21:34.280Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T19:21:34.347Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T19:26:34.138Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-09T19:26:34.242Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T19:26:34.319Z"}
+{"level":"info","message":"Login exitoso: usuario jperez con rol medico","timestamp":"2026-09-09T19:26:43.859Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T19:26:43.890Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T19:26:43.892Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T19:26:59.722Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T19:26:59.723Z"}

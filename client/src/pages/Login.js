@@ -168,14 +168,14 @@ const Login = () => {
               color="text.secondary"
             >
               Admin: admin / admin123
-            </Typography>
+            </Typography><br></br>
             <Typography
               variant="caption"
               display="block"
               color="text.secondary"
             >
               Médico: jperez / admin123
-            </Typography>
+            </Typography><br></br>
             <Typography
               variant="caption"
               display="block"
