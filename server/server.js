@@ -14,14 +14,18 @@ const perfilRoutes = require("./routes/perfilRoutes");
 const medicosRoutes = require("./routes/medicosRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const estadosRoutes = require("./routes/estadosRoutes");
-// ...
-// ...
 
 // Importar middlewares
 const errorMiddleware = require("./middlewares/errorMiddleware");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// ==========================================
+// CORRECCIÓN PARA RENDER (Trust Proxy)
+// ==========================================
+app.set('trust proxy', 1);
+// ==========================================
 
 // Middlewares de seguridad
 app.use(helmet());
@@ -33,7 +37,7 @@ app.use(
       "http://localhost:3000",
     ],
     credentials: true,
-  }),
+  })
 );
 
 // Rate limiting
@@ -61,8 +65,7 @@ app.use("/api/estados", estadosRoutes);
 app.get("/api/health", (req, res) => {
   res.json({
     status: "OK",
-    message:
-      "Sistema de Gestión Médica - Centro de Salud San José, Aguascalientes",
+    message: "Sistema de Gestión Médica - Centro de Salud San José, Aguascalientes",
     timestamp: new Date().toISOString(),
   });
 });
