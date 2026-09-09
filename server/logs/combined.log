@@ -1194,3 +1194,7 @@
 {"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T19:26:59.723Z"}
 {"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T19:28:43.871Z"}
 {"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T19:28:43.873Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T20:15:42.240Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T20:15:42.244Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T20:25:51.935Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T20:25:51.938Z"}
