@@ -1164,3 +1164,13 @@
 {"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T18:40:28.104Z"}
 {"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T18:41:00.616Z"}
 {"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T18:41:00.620Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T18:43:13.554Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T18:43:13.557Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T18:43:24.137Z"}
+{"level":"info","message":"Login exitoso: usuario jperez con rol medico","timestamp":"2026-09-09T18:43:24.470Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T18:43:24.602Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T18:43:24.654Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-09T18:43:24.659Z"}
+{"level":"info","message":"Cita creada: ID 19 por usuario jperez","timestamp":"2026-09-09T18:43:39.899Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-09T18:44:09.150Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T18:44:09.255Z"}
