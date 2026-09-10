@@ -1245,3 +1245,12 @@
 {"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:30:42.068Z"}
 {"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:30:42.072Z"}
 {"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:37:39.909Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-10T06:38:04.612Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-10T06:38:04.614Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:38:52.725Z"}
+{"level":"info","message":"Login exitoso: usuario admin con rol administrativo","timestamp":"2026-09-10T06:38:52.947Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:38:53.031Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:38:53.082Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:38:53.086Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-10T06:57:09.614Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-10T06:57:09.616Z"}
