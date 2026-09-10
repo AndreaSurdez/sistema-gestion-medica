@@ -91,5 +91,5 @@ En la carpeta `/docs` de este repositorio encontrarás:
 
 ## Licencia y Derechos
 Proyecto desarrollado con fines académicos en el marco del curso CAP 499 de Carver University.  
-© 2026 Andrea Mariana Surdez Espeleta.
+© 2026 Andrea Surdez.
 ```
