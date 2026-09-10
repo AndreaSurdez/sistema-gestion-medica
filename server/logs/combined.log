@@ -1198,3 +1198,13 @@
 {"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T20:15:42.244Z"}
 {"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T20:25:51.935Z"}
 {"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T20:25:51.938Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T22:48:42.597Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T22:48:42.599Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T22:49:18.141Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-09T22:49:18.267Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T22:49:18.351Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T22:54:56.950Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-09T22:54:57.004Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T22:54:57.100Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T22:56:28.307Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T22:56:28.309Z"}
