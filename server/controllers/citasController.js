@@ -8,12 +8,14 @@ exports.crearCita = async (req, res) => {
   const usuario = req.usuario;
 
   try {
+    // Validaciones
     if (!paciente_id || !medico_id || !fecha || !hora) {
       return res
         .status(400)
         .json({ error: "Todos los campos obligatorios deben estar completos" });
     }
 
+    // Si es médico, solo puede agendar sus propias citas
     if (usuario.rol === "medico") {
       if (usuario.medico_id !== parseInt(medico_id)) {
         return res
@@ -22,16 +24,21 @@ exports.crearCita = async (req, res) => {
       }
     }
 
+    // Obtener especialidad del médico
     const medicoResult = await pool.query(
       "SELECT especialidad FROM medicos WHERE id = $1",
       [medico_id],
     );
+
     if (medicoResult.rows.length === 0) {
       return res
         .status(404)
         .json({ error: "El médico seleccionado no existe" });
     }
 
+    const especialidad = medicoResult.rows[0].especialidad;
+
+    // Verificar que el paciente existe
     const pacienteExiste = await pool.query(
       "SELECT id FROM pacientes WHERE id = $1",
       [paciente_id],
@@ -42,8 +49,10 @@ exports.crearCita = async (req, res) => {
         .json({ error: "El paciente seleccionado no existe" });
     }
 
+    // Verificar que no haya conflicto de horario
     const conflicto = await pool.query(
-      `SELECT id FROM citas WHERE medico_id = $1 AND fecha = $2 AND hora = $3 AND estado != 'cancelada'`,
+      `SELECT id FROM citas 
+       WHERE medico_id = $1 AND fecha = $2 AND hora = $3 AND estado != 'cancelada'`,
       [medico_id, fecha, hora],
     );
     if (conflicto.rows.length > 0) {
@@ -54,7 +63,8 @@ exports.crearCita = async (req, res) => {
 
     const result = await pool.query(
       `INSERT INTO citas (paciente_id, medico_id, fecha, hora, tipo_cita, motivo_consulta, estado)
-       VALUES ($1, $2, $3, $4, $5, $6, 'pendiente') RETURNING *`,
+       VALUES ($1, $2, $3, $4, $5, $6, 'pendiente')
+       RETURNING *`,
       [
         paciente_id,
         medico_id,
@@ -77,16 +87,9 @@ exports.crearCita = async (req, res) => {
   }
 };
 
-// Listar agenda (con restricciones por rol y filtros)
+// Listar agenda (con restricciones por rol)
 exports.listarAgenda = async (req, res) => {
-  const {
-    medico_id,
-    fecha,
-    fecha_inicio,
-    fecha_fin,
-    paciente_id,
-    especialidad,
-  } = req.query;
+  const { medico_id, fecha, fecha_inicio, fecha_fin, paciente_id } = req.query;
   const usuario = req.usuario;
 
   try {
@@ -104,6 +107,7 @@ exports.listarAgenda = async (req, res) => {
     const params = [];
     let paramIndex = 1;
 
+    // Si es médico, solo ve sus citas
     if (usuario.rol === "medico") {
       query += ` AND c.medico_id = $${paramIndex}`;
       params.push(usuario.medico_id);
@@ -114,24 +118,23 @@ exports.listarAgenda = async (req, res) => {
       paramIndex++;
     }
 
+    
+
+    // Filtro por paciente
     if (paciente_id) {
       query += ` AND c.paciente_id = $${paramIndex}`;
       params.push(paciente_id);
       paramIndex++;
     }
 
-    if (especialidad) {
-      query += ` AND m.especialidad = $${paramIndex}`;
-      params.push(especialidad);
-      paramIndex++;
-    }
-
+    // Filtro por fecha única (para compatibilidad)
     if (fecha) {
       query += ` AND c.fecha = $${paramIndex}`;
       params.push(fecha);
       paramIndex++;
     }
 
+    // Filtro por rango de fechas
     if (fecha_inicio) {
       query += ` AND c.fecha >= $${paramIndex}`;
       params.push(fecha_inicio);
@@ -161,9 +164,12 @@ exports.cancelarCita = async (req, res) => {
 
   try {
     const cita = await pool.query("SELECT * FROM citas WHERE id = $1", [id]);
-    if (cita.rows.length === 0)
-      return res.status(404).json({ error: "Cita no encontrada" });
 
+    if (cita.rows.length === 0) {
+      return res.status(404).json({ error: "Cita no encontrada" });
+    }
+
+    // Si es médico, solo puede cancelar sus propias citas
     if (
       usuario.rol === "medico" &&
       cita.rows[0].medico_id !== usuario.medico_id
@@ -177,6 +183,7 @@ exports.cancelarCita = async (req, res) => {
       `UPDATE citas SET estado = 'cancelada' WHERE id = $1 RETURNING *`,
       [id],
     );
+
     logger.info(`Cita cancelada: ID ${id} por usuario ${usuario.username}`);
     res.json({ mensaje: "Cita cancelada exitosamente", cita: result.rows[0] });
   } catch (error) {
@@ -185,7 +192,7 @@ exports.cancelarCita = async (req, res) => {
   }
 };
 
-// Actualizar estado de cita
+// Actualizar estado de cita (para médico)
 exports.actualizarEstadoCita = async (req, res) => {
   const { id } = req.params;
   const { estado } = req.body;
@@ -198,13 +205,17 @@ exports.actualizarEstadoCita = async (req, res) => {
       "finalizada",
       "cancelada",
     ];
-    if (!estadosValidos.includes(estado))
+    if (!estadosValidos.includes(estado)) {
       return res.status(400).json({ error: "Estado no válido" });
+    }
 
     const cita = await pool.query("SELECT * FROM citas WHERE id = $1", [id]);
-    if (cita.rows.length === 0)
-      return res.status(404).json({ error: "Cita no encontrada" });
 
+    if (cita.rows.length === 0) {
+      return res.status(404).json({ error: "Cita no encontrada" });
+    }
+
+    // Si es médico, solo puede actualizar sus propias citas
     if (
       usuario.rol === "medico" &&
       cita.rows[0].medico_id !== usuario.medico_id
@@ -218,6 +229,7 @@ exports.actualizarEstadoCita = async (req, res) => {
       `UPDATE citas SET estado = $1 WHERE id = $2 RETURNING *`,
       [estado, id],
     );
+
     logger.info(
       `Cita ${id} actualizada a estado '${estado}' por usuario ${usuario.username}`,
     );
@@ -231,16 +243,16 @@ exports.actualizarEstadoCita = async (req, res) => {
   }
 };
 
-// Editar cita
 exports.editarCita = async (req, res) => {
   const { id } = req.params;
-  const { fecha, hora, tipo_cita, motivo_consulta } = req.body;
+  const { fecha, hora, especialidad, tipo_cita, motivo_consulta } = req.body;
   const usuario = req.usuario;
 
   try {
     const cita = await pool.query("SELECT * FROM citas WHERE id = $1", [id]);
-    if (cita.rows.length === 0)
+    if (cita.rows.length === 0) {
       return res.status(404).json({ error: "Cita no encontrada" });
+    }
 
     if (
       usuario.rol === "medico" &&
@@ -252,8 +264,14 @@ exports.editarCita = async (req, res) => {
     }
 
     const result = await pool.query(
-      `UPDATE citas SET fecha = COALESCE($1, fecha), hora = COALESCE($2, hora), tipo_cita = COALESCE($3, tipo_cita), motivo_consulta = COALESCE($4, motivo_consulta) WHERE id = $5 RETURNING *`,
-      [fecha, hora, tipo_cita, motivo_consulta, id],
+      `UPDATE citas SET 
+         fecha = COALESCE($1, fecha), 
+         hora = COALESCE($2, hora),
+         especialidad = COALESCE($3, especialidad),
+         tipo_cita = COALESCE($4, tipo_cita),
+         motivo_consulta = COALESCE($5, motivo_consulta)
+       WHERE id = $6 RETURNING *`,
+      [fecha, hora, especialidad, tipo_cita, motivo_consulta, id],
     );
 
     logger.info(`Cita editada: ID ${id} por ${usuario.username}`);

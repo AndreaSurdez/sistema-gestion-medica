@@ -1208,3 +1208,40 @@
 {"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-09T22:54:57.100Z"}
 {"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-09T22:56:28.307Z"}
 {"level":"info","message":"Ambiente: development","timestamp":"2026-09-09T22:56:28.309Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-10T06:20:01.022Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-10T06:20:01.024Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-10T06:22:01.482Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-10T06:22:01.484Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-10T06:22:04.810Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-10T06:22:04.812Z"}
+{"level":"info","message":"Servidor corriendo en puerto 5000","timestamp":"2026-09-10T06:22:06.624Z"}
+{"level":"info","message":"Ambiente: development","timestamp":"2026-09-10T06:22:06.626Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:23:26.364Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-10T06:23:26.559Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:23:26.676Z"}
+{"level":"info","message":"Login exitoso: usuario ana.martinez con rol paciente","timestamp":"2026-09-10T06:23:37.190Z"}
+{"level":"info","message":"Login exitoso: usuario admin con rol administrativo","timestamp":"2026-09-10T06:23:46.955Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:23:47.006Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:23:47.007Z"}
+{"code":"42883","file":"parse_oper.c","hint":"No operator matches the given name and argument types. You might need to add explicit type casts.","length":213,"level":"error","line":"644","message":"Error al buscar paciente: operator does not exist: character varying = integer","name":"error","position":"227","routine":"op_error","severity":"ERROR","stack":"error: operator does not exist: character varying = integer\n    at C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async exports.buscar (C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\controllers\\pacientesController.js:107:20)","timestamp":"2026-09-10T06:23:54.825Z"}
+{"code":"42883","file":"parse_oper.c","hint":"No operator matches the given name and argument types. You might need to add explicit type casts.","length":213,"level":"error","line":"644","message":"Error al buscar paciente: operator does not exist: character varying = integer","name":"error","position":"227","routine":"op_error","severity":"ERROR","stack":"error: operator does not exist: character varying = integer\n    at C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async exports.buscar (C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\controllers\\pacientesController.js:107:20)","timestamp":"2026-09-10T06:23:54.857Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:25:43.712Z"}
+{"level":"info","message":"Login exitoso: usuario admin con rol administrativo","timestamp":"2026-09-10T06:25:44.128Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:25:44.169Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:25:44.195Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:25:44.197Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:27:39.623Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:27:40.969Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:27:41.007Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:27:41.012Z"}
+{"code":"42883","file":"parse_oper.c","hint":"No operator matches the given name and argument types. You might need to add explicit type casts.","length":213,"level":"error","line":"644","message":"Error al buscar paciente: operator does not exist: character varying = integer","name":"error","position":"227","routine":"op_error","severity":"ERROR","stack":"error: operator does not exist: character varying = integer\n    at C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async exports.buscar (C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\controllers\\pacientesController.js:107:20)","timestamp":"2026-09-10T06:27:54.918Z"}
+{"code":"42883","file":"parse_oper.c","hint":"No operator matches the given name and argument types. You might need to add explicit type casts.","length":213,"level":"error","line":"644","message":"Error al buscar paciente: operator does not exist: character varying = integer","name":"error","position":"227","routine":"op_error","severity":"ERROR","stack":"error: operator does not exist: character varying = integer\n    at C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async exports.buscar (C:\\Users\\andre\\Andrea\\CARVER UNIVERSITY\\CURSO 10 - CAP 499\\sistema-gestion-medica\\server\\controllers\\pacientesController.js:107:20)","timestamp":"2026-09-10T06:27:54.928Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:27:58.886Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:27:58.893Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:27:58.898Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:27:58.914Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:30:42.063Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:30:42.065Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:30:42.068Z"}
+{"level":"info","message":"Estados actualizados: 0 → en_atencion, 0 → finalizada","timestamp":"2026-09-10T06:30:42.072Z"}
+{"level":"info","message":"Conexión exitosa a la base de datos","timestamp":"2026-09-10T06:37:39.909Z"}
