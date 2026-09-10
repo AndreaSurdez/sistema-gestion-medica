@@ -228,7 +228,7 @@ const Historial = () => {
                         display: "inline-block",
                       }}
                     >
-                      📅 Próxima fecha de control:{" "}
+                      Próxima fecha de control:{" "}
                       {new Date(entrada.fecha_control).toLocaleDateString(
                         "es-MX",
                       )}
@@ -254,6 +254,7 @@ const Historial = () => {
           ))
         )}
 
+        {/* Dialog con diseño original y etiquetas arriba */}
         <Dialog
           open={open}
           onClose={() => setOpen(false)}
@@ -268,9 +269,14 @@ const Historial = () => {
           <DialogContent sx={{ pt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+                >
+                  Motivo de Consulta *
+                </Typography>
                 <TextField
                   fullWidth
-                  label="Motivo de Consulta"
                   multiline
                   rows={2}
                   value={nuevaEntrada.motivo_consulta}
@@ -280,13 +286,19 @@ const Historial = () => {
                       motivo_consulta: e.target.value,
                     })
                   }
+                  variant="outlined"
                   required
                 />
               </Grid>
               <Grid item xs={12}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+                >
+                  Diagnóstico *
+                </Typography>
                 <TextField
                   fullWidth
-                  label="Diagnóstico"
                   multiline
                   rows={2}
                   value={nuevaEntrada.diagnostico}
@@ -296,13 +308,19 @@ const Historial = () => {
                       diagnostico: e.target.value,
                     })
                   }
+                  variant="outlined"
                   required
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+                >
+                  Tratamiento
+                </Typography>
                 <TextField
                   fullWidth
-                  label="Tratamiento"
                   multiline
                   rows={3}
                   value={nuevaEntrada.tratamiento}
@@ -312,12 +330,18 @@ const Historial = () => {
                       tratamiento: e.target.value,
                     })
                   }
+                  variant="outlined"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+                >
+                  Fecha de Próximo Control
+                </Typography>
                 <TextField
                   fullWidth
-                  label="Fecha de Próximo Control"
                   type="date"
                   value={nuevaEntrada.fecha_control}
                   onChange={(e) =>
@@ -327,12 +351,18 @@ const Historial = () => {
                     })
                   }
                   InputLabelProps={{ shrink: true }}
+                  variant="outlined"
                 />
               </Grid>
               <Grid item xs={12}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+                >
+                  Observaciones
+                </Typography>
                 <TextField
                   fullWidth
-                  label="Observaciones"
                   multiline
                   rows={2}
                   value={nuevaEntrada.observaciones}
@@ -342,6 +372,7 @@ const Historial = () => {
                       observaciones: e.target.value,
                     })
                   }
+                  variant="outlined"
                 />
               </Grid>
             </Grid>

@@ -28,7 +28,6 @@ import {
 import {
   Add,
   FilterList,
-  Print,
   Edit,
   Delete,
   Clear,
@@ -39,11 +38,12 @@ import Navbar from "../components/Navbar";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
 
-// Imports de FullCalendar
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
+import "@fullcalendar/core/index.css";
+import "@fullcalendar/daygrid/index.css";
 
 const Citas = () => {
   const { usuario } = useAuth();
@@ -65,7 +65,6 @@ const Citas = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Filtros
   const [filtroMedico, setFiltroMedico] = useState(null);
   const [filtroPaciente, setFiltroPaciente] = useState(null);
   const [filtroFechaInicio, setFiltroFechaInicio] = useState("");
@@ -73,7 +72,7 @@ const Citas = () => {
   const [filtroEspecialidad, setFiltroEspecialidad] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const [vista, setVista] = useState("lista"); // 'lista' o 'calendario'
+  const [vista, setVista] = useState("lista");
 
   useEffect(() => {
     cargarDatos();
@@ -181,10 +180,6 @@ const Citas = () => {
   const handleEditar = async () => {
     setError("");
     setSuccess("");
-    if (!citaEditar.fecha || !citaEditar.hora) {
-      setError("Fecha y hora son obligatorios");
-      return;
-    }
     try {
       await api.put(`/citas/${citaEditar.id}`, {
         fecha: citaEditar.fecha,
@@ -239,9 +234,9 @@ const Citas = () => {
     id: cita.id,
     title: `${cita.paciente_nombre} (${cita.tipo_cita})`,
     start: `${cita.fecha}T${cita.hora}`,
-    backgroundColor: getEstadoColor(cita.estado).bg,
+    backgroundColor: getEstadoColor(cita.estado).color,
     borderColor: getEstadoColor(cita.estado).color,
-    textColor: getEstadoColor(cita.estado).color,
+    textColor: "#ffffff",
     extendedProps: { ...cita },
   }));
 
@@ -308,23 +303,41 @@ const Citas = () => {
           </ToggleButtonGroup>
         </Box>
 
-        {/* FILTROS */}
+        {/* FILTROS CON ETIQUETAS ARRIBA */}
         <Paper
           sx={{ p: 3, mb: 3, borderRadius: 3, border: "1px solid #e2e8f0" }}
         >
           <Grid container spacing={2}>
             <Grid item xs={12} md={2.5}>
+              <Typography
+                variant="subtitle2"
+                sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+              >
+                Paciente
+              </Typography>
               <Autocomplete
                 size="small"
                 options={pacientes}
                 getOptionLabel={(o) => `${o.nombre} ${o.apellido_paterno}`}
                 value={filtroPaciente}
                 onChange={(e, v) => setFiltroPaciente(v)}
-                renderInput={(p) => <TextField {...p} label="Paciente" />}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    placeholder="Buscar..."
+                  />
+                )}
               />
             </Grid>
             {usuario.rol === "administrativo" && (
               <Grid item xs={12} md={2.5}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+                >
+                  Médico
+                </Typography>
                 <Autocomplete
                   size="small"
                   options={medicos}
@@ -333,18 +346,30 @@ const Citas = () => {
                   }
                   value={filtroMedico}
                   onChange={(e, v) => setFiltroMedico(v)}
-                  renderInput={(p) => <TextField {...p} label="Médico" />}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      variant="outlined"
+                      placeholder="Buscar..."
+                    />
+                  )}
                 />
               </Grid>
             )}
             <Grid item xs={12} md={2}>
+              <Typography
+                variant="subtitle2"
+                sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+              >
+                Especialidad
+              </Typography>
               <TextField
                 select
                 size="small"
                 fullWidth
-                label="Especialidad"
                 value={filtroEspecialidad}
                 onChange={(e) => setFiltroEspecialidad(e.target.value)}
+                variant="outlined"
               >
                 <MenuItem value="">
                   <em>Todas</em>
@@ -357,28 +382,51 @@ const Citas = () => {
               </TextField>
             </Grid>
             <Grid item xs={12} md={2}>
+              <Typography
+                variant="subtitle2"
+                sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+              >
+                Desde
+              </Typography>
               <TextField
                 type="date"
                 size="small"
                 fullWidth
-                label="Desde"
                 value={filtroFechaInicio}
                 onChange={(e) => setFiltroFechaInicio(e.target.value)}
                 InputLabelProps={{ shrink: true }}
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12} md={2}>
+              <Typography
+                variant="subtitle2"
+                sx={{ fontWeight: 600, mb: 1, color: "#0f172a" }}
+              >
+                Hasta
+              </Typography>
               <TextField
                 type="date"
                 size="small"
                 fullWidth
-                label="Hasta"
                 value={filtroFechaFin}
                 onChange={(e) => setFiltroFechaFin(e.target.value)}
                 InputLabelProps={{ shrink: true }}
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12} md={1}>
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontWeight: 600,
+                  mb: 1,
+                  color: "#0f172a",
+                  visibility: "hidden",
+                }}
+              >
+                Acción
+              </Typography>
               <Box sx={{ display: "flex", gap: 1, height: "100%" }}>
                 <Button
                   variant="contained"
@@ -503,7 +551,14 @@ const Citas = () => {
             </Table>
           </TableContainer>
         ) : (
-          <Paper sx={{ p: 3, borderRadius: 3, border: "1px solid #e2e8f0" }}>
+          <Paper
+            sx={{
+              p: 3,
+              borderRadius: 3,
+              border: "1px solid #e2e8f0",
+              minHeight: "500px",
+            }}
+          >
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin]}
               initialView="dayGridMonth"
@@ -524,7 +579,7 @@ const Citas = () => {
           </Paper>
         )}
 
-        {/* Dialog Nueva Cita */}
+        {/* Dialog Nueva Cita (Etiquetas arriba) */}
         <Dialog
           open={open}
           onClose={() => setOpen(false)}
@@ -569,12 +624,7 @@ const Citas = () => {
                     })
                   }
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder="Buscar paciente..."
-                      variant="outlined"
-                      required
-                    />
+                    <TextField {...params} variant="outlined" required />
                   )}
                 />
               </Box>
@@ -604,12 +654,7 @@ const Citas = () => {
                     });
                   }}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder="Buscar médico..."
-                      variant="outlined"
-                      required
-                    />
+                    <TextField {...params} variant="outlined" required />
                   )}
                   disabled={usuario.rol === "medico"}
                 />
@@ -650,6 +695,7 @@ const Citas = () => {
                         min: new Date().toISOString().split("T")[0],
                       }}
                       required
+                      variant="outlined"
                     />
                   </Box>
                 </Grid>
@@ -670,6 +716,7 @@ const Citas = () => {
                       }
                       InputLabelProps={{ shrink: true }}
                       required
+                      variant="outlined"
                     />
                   </Box>
                 </Grid>
